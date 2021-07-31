@@ -5,7 +5,7 @@ import useStyles from "../pages/styles";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../App";
-const Search = () => { 
+const Search = () => {
   const [findData, setFindData] = useContext(UserContext);
   const [userName, setUserName] = useState("");
   const history = useHistory();
@@ -17,9 +17,8 @@ const Search = () => {
         `https://gorest.co.in/public-api/users?name=${userName}`
       );
       setFindData(data?.data?.data);
-      history.push(`/users?name=${userName.split(" ").join("")}`)
+      history.push(`/user/${userName.split(" ").join("")}`);
     }
-    
   };
   const classes = useStyles();
 

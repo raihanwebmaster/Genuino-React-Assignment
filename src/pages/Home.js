@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Box, CssBaseline } from "@material-ui/core";
-import Pagination from "@material-ui/lab/Pagination";
+import {Pagination, PaginationItem} from '@material-ui/lab';
 import axios from "axios";
 import UsersTable from "../components/UsersTable";
 import Search from "../components/Search";
 import { useHistory } from "react-router-dom";
+import {Link} from 'react-router-dom';
 
 function Home() {
     const [totalPages, setTotalPages] = useState([]);
@@ -12,7 +13,7 @@ function Home() {
     const history = useHistory();
 
     const loadPages = async () => {
-        const res = await axios.get(`https://gorest.co.in/public-api/users?page=${page}`);
+        const res = await axios.get(`https://gorest.co.in/public-api/users`);
         setTotalPages(res?.data?.meta?.pagination);
     };
     useEffect(() => {
@@ -40,6 +41,10 @@ function Home() {
                         color="secondary"
                         variant="outlined"
                         onChange={(e, value) => {setPage(value)}}
+                        renderItem= {(item) => (
+                            <PaginationItem {...item} component={Link} to={`/users?page=${item.page}`} />
+                        )}
+
                     />
                 </Box>
             </Box>

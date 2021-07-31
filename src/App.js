@@ -12,14 +12,17 @@ function App() {
     <UserContext.Provider value={[findData, setFindData]}>
       <Router>
         <Switch>
-          <Route exact path="/">
-            <Home />
+          <Route path="/user/:name">
+            <SearchTable />
           </Route>
           <Route path="/users/:userId">
             <UserDetails />
           </Route>
-          <Route path="/users/:name?">
-            <SearchTable />
+          <Route  path="/users/:page?">
+            <Home />
+          </Route>
+          <Route exact path="/">
+            <Home />
           </Route>
         </Switch>
       </Router>
