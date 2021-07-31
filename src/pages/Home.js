@@ -4,10 +4,12 @@ import Pagination from "@material-ui/lab/Pagination";
 import axios from "axios";
 import UsersTable from "../components/UsersTable";
 import Search from "../components/Search";
+import { useHistory } from "react-router-dom";
 
 function Home() {
     const [totalPages, setTotalPages] = useState([]);
     const [page, setPage] = useState(1);
+    const history = useHistory();
 
     const loadPages = async () => {
         const res = await axios.get(`https://gorest.co.in/public-api/users?page=${page}`);
@@ -16,6 +18,7 @@ function Home() {
     useEffect(() => {
         loadPages();
     }, [page]);
+
 
     return (
         <div >
@@ -36,7 +39,7 @@ function Home() {
                         count={totalPages.pages}
                         color="secondary"
                         variant="outlined"
-                        onChange={(e, value) => setPage(value)}
+                        onChange={(e, value) => {setPage(value)}}
                     />
                 </Box>
             </Box>

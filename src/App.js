@@ -15,10 +15,10 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/user-details/:userId">
+          <Route path="/users/:userId">
             <UserDetails />
           </Route>
-          <Route path="/searchUser">
+          <Route path="/users/:name?">
             <SearchTable />
           </Route>
         </Switch>

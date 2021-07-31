@@ -17,7 +17,7 @@ const Search = () => {
         `https://gorest.co.in/public-api/users?name=${userName}`
       );
       setFindData(data?.data?.data);
-      history.push("/searchUser")
+      history.push(`/users?name=${userName.split(" ").join("")}`)
     }
     
   };

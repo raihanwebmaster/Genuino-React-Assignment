@@ -51,7 +51,7 @@ const UsersTable = ({ page }) => {
                 <TableBody >
                     {users?.map((user, index) => (
                         <TableRow
-                            onClick={() => history.push(`/user-details/${user.id}`)}
+                            onClick={() => history.push(`/users/${user.id}`)}
                             className={classes.click}
                             key={user.id}
                             >
