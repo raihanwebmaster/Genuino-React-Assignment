@@ -11,41 +11,19 @@ import {
   Button,
   Box,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import { UserContext } from "../App";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-
-const useStyles = makeStyles({
-  container: {
-    width: "60%",
-    margin: "auto",
-  },
-  table: {
-    minWidth: 500,
-  },
-  button: {
-    marginTop: "15px",
-  },
-  tableCell: {
-    fontWeight: "600",
-  },
-  click: {
-    cursor: "pointer",
-  },
-  green: {
-    color: "green",
-  },
-  red: {
-    color: "red",
-  },
-});
+import useStyles from "./styles";
 
 const SearchTable = () => {
   const [findData] = useContext(UserContext);
   const classes = useStyles();
   const history = useHistory();
   return (
-    <Box className={classes.container}>
+    <Paper
+      style={{ marginTop: 50 }}
+      className={`${classes.container} ${classes.container}`}
+    >
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
@@ -63,7 +41,7 @@ const SearchTable = () => {
           </TableHead>
           <TableBody>
             {findData.length === 0 ? (
-              <p style={{textAlign: 'center'}}>There is no user</p>
+              <p style={{ textAlign: "center" }}>There is no user</p>
             ) : (
               findData?.map((user, index) => (
                 <TableRow
@@ -98,7 +76,7 @@ const SearchTable = () => {
         <ArrowBackIcon />
         Back
       </Button>
-    </Box>
+    </Paper>
   );
 };
 

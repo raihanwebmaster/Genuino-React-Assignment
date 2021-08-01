@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 import { Grid, AppBar, TextField, Button } from "@material-ui/core";
 import useStyles from "../pages/styles";
@@ -17,7 +17,7 @@ const Search = () => {
         `https://gorest.co.in/public-api/users?name=${userName}`
       );
       setFindData(data?.data?.data);
-      history.push(`/user/${userName.split(" ").join("")}`);
+      history.push(`/users?name=${userName.split(" ").join("")}`);
     }
   };
   const classes = useStyles();
